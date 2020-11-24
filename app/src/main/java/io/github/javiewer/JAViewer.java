@@ -1,29 +1,13 @@
 package io.github.javiewer;
 
 import android.app.Application;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Environment;
 import androidx.fragment.app.Fragment;
-
-import com.crashlytics.android.Crashlytics;
+import cn.jzvd.JZVideoPlayer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
 import com.google.gson.stream.JsonReader;
-
-import java.io.File;
-import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import cn.jzvd.JZVideoPlayer;
-import io.fabric.sdk.android.Fabric;
 import io.github.javiewer.adapter.item.DataSource;
 import io.github.javiewer.fragment.ActressesFragment;
 import io.github.javiewer.fragment.HomeFragment;
@@ -33,6 +17,15 @@ import io.github.javiewer.fragment.favourite.FavouriteTabsFragment;
 import io.github.javiewer.fragment.genre.GenreTabsFragment;
 import io.github.javiewer.network.BasicService;
 import io.github.javiewer.util.ExoPlayerImpl;
+import java.io.File;
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import okhttp3.Cookie;
 import okhttp3.CookieJar;
 import okhttp3.HttpUrl;
@@ -148,15 +141,9 @@ public class JAViewer extends Application {
     }
 
     public static boolean Objects_equals(Object a, Object b) {
-        return (a == b) || (a != null && a.equals(b));
+        return Objects.equals(a, b);
     }
 
-    public static void a(Context context) {
-        String url = "https://qr.alipay.com/a6x05027ymf6n8kl0qkoa54";
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        context.startActivity(intent);
-    }
 
     public static String b(String s1, String s2) {
         try {
@@ -171,6 +158,5 @@ public class JAViewer extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Fabric.with(this, new Crashlytics());
     }
 }

@@ -28,7 +28,7 @@ import retrofit2.Call;
 public class GenreFragment extends Fragment {
 
     @BindView(R.id.genre_recycler_view)
-    public RecyclerView mRecyclerView;
+    public RecyclerView recycler_view;
     protected List<Genre> genres = new ArrayList<>();
     private RecyclerView.Adapter mAdapter;
     private StaggeredGridLayoutManager mLayoutManager;
@@ -49,13 +49,13 @@ public class GenreFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mRecyclerView.setLayoutManager(mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        mRecyclerView.setAdapter(this.mAdapter = new GenreAdapter(genres, this.getActivity()));
-        mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(2, ViewUtil.dpToPx(8), true));
+        recycler_view.setLayoutManager(mLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        recycler_view.setAdapter(this.mAdapter = new GenreAdapter(genres, this.getActivity()));
+        recycler_view.addItemDecoration(new GridSpacingItemDecoration(2, ViewUtil.dpToPx(8), true));
 
         RecyclerView.ItemAnimator animator = new SlideInUpAnimator();
         animator.setAddDuration(300);
-        mRecyclerView.setItemAnimator(animator);
+        recycler_view.setItemAnimator(animator);
 
         this.mAdapter.notifyItemRangeInserted(0, this.mAdapter.getItemCount());
     }

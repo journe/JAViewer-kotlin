@@ -18,7 +18,7 @@
         android:orientation="vertical"
         android:paddingLeft="72dp">
 
-        <com.wefika.flowlayout.FlowLayout
+        <com.nex3z.flowlayout.FlowLayout
             android:id="@+id/genre_flow_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

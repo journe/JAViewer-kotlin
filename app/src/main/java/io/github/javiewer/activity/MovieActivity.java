@@ -29,8 +29,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.nex3z.flowlayout.FlowLayout;
 import com.robertlevonyan.views.chip.Chip;
-import com.wefika.flowlayout.FlowLayout;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -150,52 +150,52 @@ public class MovieActivity extends SecureActivity {
     private void displayInfo(MovieDetail detail) {
         //Info
         {
-            RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.headers_recycler_view);
+            RecyclerView recycler_view = (RecyclerView) findViewById(R.id.headers_recycler_view);
             ImageView mIcon = (ImageView) findViewById(R.id.movie_icon_header);
 
             if (detail.headers.isEmpty()) {
                 TextView mText = (TextView) findViewById(R.id.header_empty_text);
-                mRecyclerView.setVisibility(View.GONE);
+                recycler_view.setVisibility(View.GONE);
                 mText.setVisibility(View.VISIBLE);
                 ViewUtil.alignIconToView(mIcon, mText);
             } else {
-                mRecyclerView.setAdapter(new MovieHeaderAdapter(detail.headers, this, mIcon));
-                mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-                mRecyclerView.setNestedScrollingEnabled(false);
+                recycler_view.setAdapter(new MovieHeaderAdapter(detail.headers, this, mIcon));
+                recycler_view.setLayoutManager(new LinearLayoutManager(this));
+                recycler_view.setNestedScrollingEnabled(false);
             }
         }
 
         //Screenshots
         {
-            RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.screenshots_recycler_view);
+            RecyclerView recycler_view = (RecyclerView) findViewById(R.id.screenshots_recycler_view);
             ImageView mIcon = (ImageView) findViewById(R.id.movie_icon_screenshots);
 
             if (detail.screenshots.isEmpty()) {
                 TextView mText = (TextView) findViewById(R.id.screenshots_empty_text);
-                mRecyclerView.setVisibility(View.GONE);
+                recycler_view.setVisibility(View.GONE);
                 mText.setVisibility(View.VISIBLE);
                 ViewUtil.alignIconToView(mIcon, mText);
             } else {
-                mRecyclerView.setAdapter(new ScreenshotAdapter(detail.screenshots, this, mIcon, movie));
-                mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
-                mRecyclerView.setNestedScrollingEnabled(false);
+                recycler_view.setAdapter(new ScreenshotAdapter(detail.screenshots, this, mIcon, movie));
+                recycler_view.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL));
+                recycler_view.setNestedScrollingEnabled(false);
             }
         }
 
         //Actress
         {
-            RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.actresses_recycler_view);
+            RecyclerView recycler_view = (RecyclerView) findViewById(R.id.actresses_recycler_view);
             ImageView mIcon = (ImageView) findViewById(R.id.movie_icon_actresses);
 
             if (detail.actresses.isEmpty()) {
                 TextView mText = (TextView) findViewById(R.id.actresses_empty_text);
-                mRecyclerView.setVisibility(View.GONE);
+                recycler_view.setVisibility(View.GONE);
                 mText.setVisibility(View.VISIBLE);
                 ViewUtil.alignIconToView(mIcon, mText);
             } else {
-                mRecyclerView.setAdapter(new ActressPaletteAdapter(detail.actresses, this, mIcon));
-                mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-                mRecyclerView.setNestedScrollingEnabled(false);
+                recycler_view.setAdapter(new ActressPaletteAdapter(detail.actresses, this, mIcon));
+                recycler_view.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+                recycler_view.setNestedScrollingEnabled(false);
             }
         }
 

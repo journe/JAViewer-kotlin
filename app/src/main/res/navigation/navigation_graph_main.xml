@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph_main"
+    app:startDestination="@id/nav_home">
+  <fragment
+      android:id="@+id/nav_home"
+      android:name="io.github.javiewer.fragment.HomeFragment"
+      android:label="HomeFragment"
+      tools:layout="@layout/fragment_recycler" />
+  <fragment
+      android:id="@+id/nav_popular"
+      android:name="io.github.javiewer.fragment.PopularFragment"
+      android:label="PopularFragment" />
+  <fragment
+      android:id="@+id/nav_actresses"
+      android:name="io.github.javiewer.fragment.ActressesFragment"
+      android:label="ActressesFragment" />
+  <fragment
+      android:id="@+id/nav_released"
+      android:name="io.github.javiewer.fragment.ReleasedFragment"
+      android:label="ReleasedFragment" />
+  <fragment
+      android:id="@+id/nav_genre"
+      android:name="io.github.javiewer.fragment.genre.GenreTabsFragment"
+      android:label="GenreTabsFragment" />
+  <fragment
+      android:id="@+id/nav_favourite"
+      android:name="io.github.javiewer.fragment.favourite.FavouriteFragment"
+      android:label="FavouriteFragment" />
+</navigation>
