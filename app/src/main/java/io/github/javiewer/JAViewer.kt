@@ -10,6 +10,8 @@ import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
 import io.github.javiewer.adapter.item.DataSource
+import io.github.javiewer.database.AppDatabase
+import io.github.javiewer.database.AppDatabase.Companion
 import io.github.javiewer.network.BasicRetrofit
 import io.github.javiewer.network.BasicService
 import io.github.javiewer.util.ExoPlayerImpl
@@ -33,6 +35,9 @@ class JAViewer : Application() {
     val DATA_SOURCES: MutableList<DataSource> = mutableListOf()
     lateinit var CONFIGURATIONS: Configurations
     lateinit var SERVICE: BasicService
+    lateinit var application: Application
+
+    lateinit var DB: AppDatabase
 
     val hostReplacements: MutableMap<String, String?> = HashMap()
     val HTTP_CLIENT: OkHttpClient = BasicRetrofit.HTTP_CLIENT
@@ -115,10 +120,18 @@ class JAViewer : Application() {
 
   override fun onCreate() {
     super.onCreate()
+    application = this
+    DB = AppDatabase.getInstance(application)
     Logger.addLogAdapter(object :
         AndroidLogAdapter(
-            PrettyFormatStrategy.newBuilder().tag("JAV").build()) {
-      override fun isLoggable(priority: Int, tag: String?): Boolean {
+            PrettyFormatStrategy.newBuilder()
+                .tag("JAV")
+                .build()
+        ) {
+      override fun isLoggable(
+        priority: Int,
+        tag: String?
+      ): Boolean {
         return BuildConfig.DEBUG
       }
     })

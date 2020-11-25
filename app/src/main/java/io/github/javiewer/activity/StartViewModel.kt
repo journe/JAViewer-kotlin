@@ -2,6 +2,7 @@ package io.github.javiewer.activity
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import io.github.javiewer.network.BasicRetrofit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.invoke
 import org.jsoup.Jsoup
@@ -19,11 +20,10 @@ class StartViewModel : ViewModel() {
 
   private suspend fun getTellMe(): String =
     Dispatchers.IO {
-      val ele = Jsoup.connect("https://tellme.pw/avmoo")
+      val ele = Jsoup.connect("https://tellme.pw/avmoo").userAgent(BasicRetrofit.USER_AGENT)
           .get()
       return@IO ele.body()
           .selectFirst("h4")
           .text()
     }
-
 }
