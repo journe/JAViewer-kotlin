@@ -257,7 +257,7 @@ class MainActivity : SecureActivity() {
           startActivity(
               MovieListActivity.newIntent(
                   this@MainActivity, "$query 的搜索结果",
-                  JAViewer.getDataSource()
+                  JAViewer.dataSource
                       .getLink()
                       + BasicService.LANGUAGE_NODE
                       + "/search/"
@@ -297,7 +297,7 @@ class MainActivity : SecureActivity() {
           .setItems(items, OnClickListener { dialog, which ->
             val newSource =
               JAViewer.DATA_SOURCES[which]
-            if (newSource == JAViewer.getDataSource()) {
+            if (newSource == JAViewer.dataSource) {
               return@OnClickListener
             }
             JAViewer.CONFIGURATIONS.dataSource = newSource

@@ -38,7 +38,7 @@ class DownloadFragment : RecyclerFragment<DownloadLink?, LinearLayoutManager?>()
             mAdView.loadAd(adRequest);
         }*/
     setLayoutManager(LinearLayoutManager(this.context))
-    adapter = ScaleInAnimationAdapter(DownloadLinkAdapter(items, this.activity, provider))
+    adapter = ScaleInAnimationAdapter(DownloadLinkAdapter(this.items, this.activity, provider))
     recycler_view.addItemDecoration(DownloadItemDecoration())
     val animator: ItemAnimator = SlideInUpAnimator()
     animator.addDuration = 300
@@ -46,12 +46,12 @@ class DownloadFragment : RecyclerFragment<DownloadLink?, LinearLayoutManager?>()
     setOnRefreshListener(
         OnRefreshListener { onScrollListener!!.refresh() })
     addOnScrollListener(object : BasicOnScrollListener<DownloadLink?>() {
-      override fun newCall(page: Int): Call<ResponseBody> {
+      override fun newCall(page: Int): Call<ResponseBody?>? {
         return this@DownloadFragment.newCall(page)
       }
 
-      override fun getLayoutManager(): LayoutManager {
-        return layoutManager
+      override fun getLayoutManager(): LinearLayoutManager? {
+        return this@DownloadFragment.layoutManager
       }
 
       override fun getRefreshLayout(): SwipeRefreshLayout {
@@ -59,11 +59,11 @@ class DownloadFragment : RecyclerFragment<DownloadLink?, LinearLayoutManager?>()
       }
 
       override fun getAdapter(): Adapter<*>? {
-        return adapter
+        return this@DownloadFragment.adapter
       }
 
-      override fun getItems(): MutableList<DownloadLink> {
-        return items
+      override fun getItems(): MutableList<DownloadLink?> {
+        return this@DownloadFragment.items
       }
 
       @Throws(
@@ -87,7 +87,7 @@ class DownloadFragment : RecyclerFragment<DownloadLink?, LinearLayoutManager?>()
     super.onActivityCreated(savedInstanceState)
   }
 
-  fun newCall(page: Int): Call<ResponseBody> {
+  fun newCall(page: Int): Call<ResponseBody?>? {
     return provider!!.search(keyword, page)
   }
 }
