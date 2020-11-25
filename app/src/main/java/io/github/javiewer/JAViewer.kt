@@ -10,6 +10,7 @@ import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
 import io.github.javiewer.adapter.item.DataSource
+import io.github.javiewer.network.BasicRetrofit
 import io.github.javiewer.network.BasicService
 import io.github.javiewer.util.ExoPlayerImpl
 import okhttp3.Cookie
@@ -29,36 +30,12 @@ import java.util.HashMap
  */
 class JAViewer : Application() {
   companion object {
-    const val USER_AGENT =
-      "Mozilla/5.0 (Linux; Android 5.1.1; Nexus 5 Build/LMY48B; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.65 Mobile Safari/537.36"
     val DATA_SOURCES: MutableList<DataSource> = mutableListOf()
     lateinit var CONFIGURATIONS: Configurations
     lateinit var SERVICE: BasicService
 
     val hostReplacements: MutableMap<String, String?> = HashMap()
-    val HTTP_CLIENT: OkHttpClient = Builder().addInterceptor { chain ->
-      val original = chain.request()
-      val request = original.newBuilder()
-          .url(replaceUrl(original.url()))
-          .header("User-Agent", USER_AGENT)
-          .build()
-      chain.proceed(request)
-    }
-        .cookieJar(object : CookieJar {
-          private val cookieStore = HashMap<HttpUrl, List<Cookie>>()
-          override fun saveFromResponse(
-            url: HttpUrl,
-            cookies: List<Cookie>
-          ) {
-            cookieStore[url] = cookies
-          }
-
-          override fun loadForRequest(url: HttpUrl): List<Cookie> {
-            val cookies = cookieStore[url]
-            return cookies ?: ArrayList()
-          }
-        })
-        .build()
+    val HTTP_CLIENT: OkHttpClient = BasicRetrofit.HTTP_CLIENT
     val dataSource: DataSource
       get() = CONFIGURATIONS.dataSource
 
@@ -76,16 +53,6 @@ class JAViewer : Application() {
         dir.mkdirs()
         return dir
       }
-
-    private fun replaceUrl(url: HttpUrl): HttpUrl {
-      val builder = url.newBuilder()
-      val host = url.url().host
-      if (hostReplacements.containsKey(host)) {
-        builder.host(hostReplacements[host])
-        return builder.build()
-      }
-      return url
-    }
 
     @Throws(JsonParseException::class) fun <T> parseJson(
       beanClass: Class<T>?,

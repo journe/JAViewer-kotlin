@@ -91,8 +91,7 @@ class WebViewActivity constructor() : SecureActivity() {
                     return
                   }
                   val gson: Gson = Gson()
-                  val json: String = response.body()!!
-                      .string()
+                  val json: String = response.body!!.string()
                   val `object`: JsonObject = gson.fromJson(json, JsonObject::class.java)
                   val playBack: String = `object`.get("url")
                       .getAsString()
@@ -115,7 +114,7 @@ class WebViewActivity constructor() : SecureActivity() {
 
   fun testVideoPlayBack(url: String?) {
     val request: Request = Builder()
-        .url(url)
+        .url(url!!)
         .get()
         .build()
     httpClient.newCall(request)
@@ -133,11 +132,11 @@ class WebViewActivity constructor() : SecureActivity() {
             if (isFinishing()) {
               return
             }
-            if (response.code() == 200) {
+            if (response.code == 200) {
               val intent: Intent = Intent()
               intent.putExtra(
-                  "m3u8", response.request()
-                  .url()
+                  "m3u8", response.request
+                  .url
                   .toString()
               )
               setResult(RESULT_OK, intent)
@@ -147,7 +146,8 @@ class WebViewActivity constructor() : SecureActivity() {
         })
   }
 
-  @OnClick(id.button_unlock) fun onUnlock(button: Button) {
+  @OnClick(id.button_unlock)
+  fun onUnlock(button: Button) {
     locked = false
     button.setEnabled(false)
     Toast.makeText(this, "锁定已解除，请完成验证码，不要按任何其他地方！", Toast.LENGTH_LONG)

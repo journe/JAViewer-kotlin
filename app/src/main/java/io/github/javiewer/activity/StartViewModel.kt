@@ -12,7 +12,8 @@ import org.jsoup.Jsoup
 class StartViewModel : ViewModel() {
   val tellme = liveData {
     emit(
-        getTellMe()
+        "https://avmoo.cyou"
+//        getTellMe()
     )
   }
 

@@ -70,7 +70,7 @@ class Configurations {
       Companion.file = file
       var config: Configurations? = null
       try {
-        config = JAViewer.Companion.parseJson(
+        config = JAViewer.parseJson(
             Configurations::class.java, JsonReader(
             FileReader(file)
         )

@@ -93,6 +93,8 @@ class StartActivity : AppCompatActivity() {
       Logger.d(it)
       val dataSources = listOf(DataSource("AVMOO 日本", it))
       JAViewer.DATA_SOURCES.addAll(dataSources)
+      JAViewer.CONFIGURATIONS.dataSource = dataSources[0]
+      JAViewer.CONFIGURATIONS.save()
       start()
     }
 
@@ -141,19 +143,19 @@ class StartActivity : AppCompatActivity() {
   }
 
   fun handleProperties(properties: Properties) {
-    JAViewer.DATA_SOURCES.clear()
-    properties.dataSources?.let { JAViewer.DATA_SOURCES.addAll(it.toList()) }
-    JAViewer.hostReplacements.clear()
-    for (source: DataSource in JAViewer.DATA_SOURCES) {
-      try {
-        val host: String = URI(source.getLink()).host
-        for (h: String in source.legacies) {
-          JAViewer.hostReplacements[h] = host
-        }
-      } catch (e: URISyntaxException) {
-        e.printStackTrace()
-      }
-    }
+//    JAViewer.DATA_SOURCES.clear()
+//    properties.dataSources?.let { JAViewer.DATA_SOURCES.addAll(it.toList()) }
+//    JAViewer.hostReplacements.clear()
+//    for (source: DataSource in JAViewer.DATA_SOURCES) {
+//      try {
+//        val host: String = URI(source.getLink()).host
+//        for (h: String in source.legacies) {
+//          JAViewer.hostReplacements[h] = host
+//        }
+//      } catch (e: URISyntaxException) {
+//        e.printStackTrace()
+//      }
+//    }
 //    val currentVersion: Int
 //    try {
 //      currentVersion = packageManager.getPackageInfo(packageName, 0).versionCode
