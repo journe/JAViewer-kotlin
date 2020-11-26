@@ -7,6 +7,8 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import io.github.javiewer.JAViewer
 import io.github.javiewer.JAViewer.Companion
+import io.github.javiewer.adapter.item.Movie
+import io.github.javiewer.database.dao.MovieDao
 import io.github.javiewer.database.dao.SearchHistoryDao
 import io.github.javiewer.database.dao.UserInfoDao
 import kotlin.reflect.KProperty
@@ -15,7 +17,7 @@ import kotlin.reflect.KProperty
  * Created by journey on 2020/5/18.
  */
 @Database(
-    entities = [TopicModelMinimal::class],
+    entities = [Movie::class],
     version = 1,
     exportSchema = false
 )
@@ -23,6 +25,7 @@ import kotlin.reflect.KProperty
 abstract class AppDatabase : RoomDatabase() {
   abstract fun userInfoDao(): UserInfoDao
   abstract fun searchHistoryDao(): SearchHistoryDao
+  abstract fun movieDao(): MovieDao
 
   operator fun getValue(
     companion: JAViewer.Companion,

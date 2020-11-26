@@ -46,7 +46,7 @@ class JAViewer : Application() {
 
     fun recreateService() {
       SERVICE = Retrofit.Builder()
-          .baseUrl(dataSource.getLink())
+          .baseUrl(dataSource.link)
           .client(HTTP_CLIENT)
           .build()
           .create(BasicService::class.java)

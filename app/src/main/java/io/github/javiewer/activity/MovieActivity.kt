@@ -102,12 +102,12 @@ class MovieActivity() : SecureActivity() {
     mFab!!.setOnClickListener(OnClickListener {
       val intent = Intent(this@MovieActivity, DownloadActivity::class.java)
       val arguments = Bundle()
-      arguments.putString("keyword", movie!!.getCode())
+      arguments.putString("keyword", movie!!.code)
       intent.putExtras(arguments)
       startActivity(intent)
     })
     mFab!!.bringToFront()
-    val call = JAViewer.SERVICE[movie!!.getLink()]
+    val call = JAViewer.SERVICE[movie!!.link]
     call!!.enqueue(object : Callback<ResponseBody> {
       override fun onResponse(
         call: Call<ResponseBody>,
@@ -122,7 +122,7 @@ class MovieActivity() : SecureActivity() {
               response.body()!!
                   .string()
           )
-          detail.headers.add(0, Header.create("影片名", movie!!.getTitle(), null))
+          detail.headers.add(0, Header.create("影片名", movie!!.title, null))
           displayInfo(detail)
           Glide.with(
               mToolbarLayoutBackground!!.context.applicationContext
@@ -202,27 +202,25 @@ class MovieActivity() : SecureActivity() {
     run {
       val mIcon: ImageView = findViewById<View>(id.movie_icon_genre) as ImageView
       if (detail.genres.isEmpty()) {
-        mFlowLayout!!.setVisibility(View.GONE)
+        mFlowLayout!!.visibility = View.GONE
         val mText: TextView = findViewById<View>(id.genre_empty_text) as TextView
-        mText.setVisibility(View.VISIBLE)
+        mText.visibility = View.VISIBLE
         ViewUtil.alignIconToView(mIcon, mText)
       } else {
         for (i in detail.genres.indices) {
           val genre: Genre = detail.genres.get(i)
-          val view: View = getLayoutInflater().inflate(layout.chip_genre, mFlowLayout, false)
+          val view: View = layoutInflater.inflate(layout.chip_genre, mFlowLayout, false)
           val chip: Chip = view.findViewById<View>(id.chip_genre) as Chip
-          chip.setOnClickListener(object : OnClickListener {
-            override fun onClick(v: View) {
-              if (genre.getLink() != null) {
-                startActivity(
-                    MovieListActivity.Companion.newIntent(
-                        this@MovieActivity, genre.getName(), genre.getLink()
-                    )
-                )
-              }
+          chip.setOnClickListener {
+            if (genre.link != null) {
+              startActivity(
+                  MovieListActivity.newIntent(
+                      this@MovieActivity, genre.name, genre.link
+                  )
+              )
             }
-          })
-          chip.setChipText(genre.getName())
+          }
+          chip.chipText = genre.name
           mFlowLayout!!.addView(view)
           if (i == 0) {
             ViewUtil.alignIconToView(mIcon, view)

@@ -103,7 +103,7 @@ class MainActivity : SecureActivity() {
               MovieListActivity.newIntent(
                   this@MainActivity, "$query 的搜索结果",
                   JAViewer.dataSource
-                      .getLink()
+                      .link
                       + BasicService.LANGUAGE_NODE
                       + "/search/"
                       + URLEncoder.encode(query, "UTF-8")

@@ -76,7 +76,7 @@ public class MovieHeaderAdapter extends RecyclerView.Adapter<MovieHeaderAdapter.
                     public void onClick(View v) {
                         Intent intent = new Intent(mParentActivity, MovieListActivity.class);
                         Bundle bundle = new Bundle();
-                        bundle.putString("title", header.getName() + " " + header.getValue());
+                        bundle.putString("title", header.name + " " + header.value);
                         bundle.putString("link", header.getLink());
                         intent.putExtras(bundle);
                         mParentActivity.startActivity(intent);

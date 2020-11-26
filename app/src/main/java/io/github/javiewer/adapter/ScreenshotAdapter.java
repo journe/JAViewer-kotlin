@@ -69,7 +69,7 @@ public class ScreenshotAdapter extends RecyclerView.Adapter<ScreenshotAdapter.Vi
                     urls[k] = screenshots.get(k).getImageUrl();
                 }
                 bundle.putStringArray("urls", urls);
-                bundle.putSerializable("movie", movie);
+                //bundle.putSerializable("movie", movie);
                 bundle.putInt("position", holder.getAdapterPosition());
                 i.putExtras(bundle);
                 mParentActivity.startActivity(i);

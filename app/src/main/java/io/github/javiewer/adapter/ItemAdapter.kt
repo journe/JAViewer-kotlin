@@ -2,7 +2,6 @@ package io.github.javiewer.adapter
 
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import io.github.javiewer.adapter.item.Movie
 
 /**
  * Project: JAViewer

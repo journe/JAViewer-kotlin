@@ -25,7 +25,7 @@ object AVMOProvider {
       val hot = span.getElementsByTag("i").size > 0
       val date = span.select("date")
       movies.add(
-          Movie.create(
+          Movie(
               img.attr("title"),  //标题
               date[0].text(),  //番号
               date[1].text(),  //日期
@@ -116,27 +116,25 @@ object AVMOProvider {
                   null
               ))
         }
-        {
-          val headerNames: MutableList<String> = ArrayList()
-          val headerAttr: MutableList<Array<String>> = ArrayList()
-          for (p in info.select("p[class*=header]")) {
-            headerNames.add(
-                p.text()
-                    .replace(":", "")
-            )
-          }
-          for (a in info.select("p > a")) {
-            headerAttr.add(arrayOf(a.text(), a.attr("href")))
-          }
-          for (i in 0 until Math.min(headerNames.size, headerAttr.size)) {
-            movie.headers.add(
-                Header.create(
-                    headerNames[i],
-                    headerAttr[i][0].trim { it <= ' ' },
-                    headerAttr[i][1].trim { it <= ' ' }
-                )
-            )
-          }
+        val headerNames: MutableList<String> = ArrayList()
+        val headerAttr: MutableList<Array<String>> = ArrayList()
+        for (p in info.select("p[class*=header]")) {
+          headerNames.add(
+              p.text()
+                  .replace(":", "")
+          )
+        }
+        for (a in info.select("p > a")) {
+          headerAttr.add(arrayOf(a.text(), a.attr("href")))
+        }
+        for (i in 0 until Math.min(headerNames.size, headerAttr.size)) {
+          movie.headers.add(
+              Header.create(
+                  headerNames[i],
+                  headerAttr[i][0].trim { it <= ' ' },
+                  headerAttr[i][1].trim { it <= ' ' }
+              )
+          )
         }
         for (a in info.select("* > [class=genre] > a")) {
           movie.genres.add(

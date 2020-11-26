@@ -43,7 +43,7 @@ open class MovieAdapter(
     holder.mCard!!.setOnClickListener {
       val intent = Intent(mParentActivity, MovieActivity::class.java)
       val bundle = Bundle()
-      bundle.putSerializable("movie", movie)
+//      bundle.putSerializable("movie", movie)
       intent.putExtras(bundle)
       mParentActivity.startActivity(intent)
     }
@@ -51,9 +51,9 @@ open class MovieAdapter(
     Glide.with(
         holder.mImageCover!!.context.applicationContext
     )
-        .load(movie.getCoverUrl())
+        .load(movie.coverUrl)
         .into(holder.mImageCover)
-    holder.mImageHot!!.visibility = if (movie.isHot && showIfHot) View.VISIBLE else View.GONE
+    holder.mImageHot!!.visibility = if (movie.hot && showIfHot) View.VISIBLE else View.GONE
   }
 
   class ViewHolder(view: View?) : RecyclerView.ViewHolder(
@@ -72,9 +72,9 @@ open class MovieAdapter(
     var mCard: CardView? = view!!.findViewById(R.id.card_movie)
 
     fun parse(movie: Movie) {
-      mTextCode!!.text = movie.getCode()
-      mTextTitle!!.text = movie.getTitle()
-      mTextDate!!.text = movie.getDate()
+      mTextCode!!.text = movie.code
+      mTextTitle!!.text = movie.title
+      mTextDate!!.text = movie.date
     }
 
     init {
