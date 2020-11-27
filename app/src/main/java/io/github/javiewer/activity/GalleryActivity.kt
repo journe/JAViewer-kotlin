@@ -38,7 +38,7 @@ import io.github.javiewer.JAViewer
 import io.github.javiewer.R
 import io.github.javiewer.R.id
 import io.github.javiewer.R.layout
-import io.github.javiewer.adapter.item.Movie
+import io.github.javiewer.model.entity.Movie
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream

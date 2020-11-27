@@ -9,22 +9,16 @@ import com.google.gson.stream.JsonReader
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
-import io.github.javiewer.adapter.item.DataSource
-import io.github.javiewer.database.AppDatabase
-import io.github.javiewer.database.AppDatabase.Companion
-import io.github.javiewer.network.BasicRetrofit
-import io.github.javiewer.network.BasicService
+import io.github.javiewer.model.entity.DataSource
+import io.github.javiewer.model.database.AppDatabase
+import io.github.javiewer.model.network.BasicRetrofit
+import io.github.javiewer.model.network.BasicService
 import io.github.javiewer.util.ExoPlayerImpl
-import okhttp3.Cookie
-import okhttp3.CookieJar
-import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
-import okhttp3.OkHttpClient.Builder
 import retrofit2.Retrofit
 import java.io.File
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
-import java.util.ArrayList
 import java.util.HashMap
 
 /**

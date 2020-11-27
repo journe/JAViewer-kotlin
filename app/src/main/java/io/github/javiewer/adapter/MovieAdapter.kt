@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide
 import io.github.javiewer.R
 import io.github.javiewer.activity.MovieActivity
 import io.github.javiewer.adapter.MovieAdapter.ViewHolder
-import io.github.javiewer.adapter.item.Movie
+import io.github.javiewer.model.entity.Movie
 
 /**
  * Project: JAViewer

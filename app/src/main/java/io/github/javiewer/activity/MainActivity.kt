@@ -19,7 +19,7 @@ import io.github.javiewer.fragment.HomeFragment
 import io.github.javiewer.fragment.PopularFragment
 import io.github.javiewer.fragment.ReleasedFragment
 import io.github.javiewer.fragment.genre.GenreTabsFragment
-import io.github.javiewer.network.BasicService
+import io.github.javiewer.model.network.BasicService
 import io.github.javiewer.view.SimpleSearchView.OnQueryTextListener
 import kotlinx.android.synthetic.main.activity_main.drawer_layout
 import kotlinx.android.synthetic.main.activity_main.nav_view

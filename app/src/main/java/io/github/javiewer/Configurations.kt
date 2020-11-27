@@ -2,9 +2,9 @@ package io.github.javiewer
 
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
-import io.github.javiewer.adapter.item.Actress
-import io.github.javiewer.adapter.item.DataSource
-import io.github.javiewer.adapter.item.Movie
+import io.github.javiewer.model.entity.Actress
+import io.github.javiewer.model.entity.DataSource
+import io.github.javiewer.model.entity.Movie
 import java.io.File
 import java.io.FileReader
 import java.io.FileWriter

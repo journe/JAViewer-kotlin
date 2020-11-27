@@ -15,7 +15,7 @@ import io.github.javiewer.JAViewer
 import io.github.javiewer.R
 import io.github.javiewer.R.layout
 import io.github.javiewer.adapter.GenreAdapter
-import io.github.javiewer.adapter.item.Genre
+import io.github.javiewer.model.entity.Genre
 import io.github.javiewer.view.ViewUtil
 import io.github.javiewer.view.decoration.GridSpacingItemDecoration
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator

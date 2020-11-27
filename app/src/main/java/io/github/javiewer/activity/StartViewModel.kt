@@ -2,7 +2,7 @@ package io.github.javiewer.activity
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import io.github.javiewer.network.BasicRetrofit
+import io.github.javiewer.model.network.BasicRetrofit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.invoke
 import org.jsoup.Jsoup

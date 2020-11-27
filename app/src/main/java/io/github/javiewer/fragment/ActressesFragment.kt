@@ -8,8 +8,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import io.github.javiewer.JAViewer
 import io.github.javiewer.adapter.ActressAdapter
-import io.github.javiewer.adapter.item.Actress
-import io.github.javiewer.network.provider.AVMOProvider
+import io.github.javiewer.model.entity.Actress
+import io.github.javiewer.model.network.provider.AVMOProvider
 import io.github.javiewer.view.decoration.ActressItemDecoration
 import io.github.javiewer.view.listener.EndlessOnScrollListener
 import kotlinx.android.synthetic.main.fragment_recycler.recycler_view

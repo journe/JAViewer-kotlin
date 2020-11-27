@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import io.github.javiewer.activity.MovieListActivity;
-import io.github.javiewer.adapter.item.Actress;
+import io.github.javiewer.model.entity.Actress;
 
 /**
  * Project: JAViewer

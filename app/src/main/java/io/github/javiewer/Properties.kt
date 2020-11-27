@@ -1,6 +1,6 @@
 package io.github.javiewer
 
-import io.github.javiewer.adapter.item.DataSource
+import io.github.javiewer.model.entity.DataSource
 
 /**
  * Project: JAViewer

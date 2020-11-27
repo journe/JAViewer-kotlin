@@ -11,7 +11,7 @@ import io.github.javiewer.JAViewer
 import io.github.javiewer.R.layout
 import io.github.javiewer.adapter.ViewPagerAdapter
 import io.github.javiewer.fragment.ExtendedAppBarFragment
-import io.github.javiewer.network.provider.AVMOProvider.parseGenres
+import io.github.javiewer.model.network.provider.AVMOProvider.parseGenres
 import kotlinx.android.synthetic.main.fragment_genre.genre_progress_bar
 import kotlinx.android.synthetic.main.fragment_genre.genre_tabs
 import kotlinx.android.synthetic.main.fragment_genre.genre_view_pager

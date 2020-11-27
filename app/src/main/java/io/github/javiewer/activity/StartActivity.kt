@@ -22,12 +22,9 @@ import io.github.javiewer.Configurations
 import io.github.javiewer.JAViewer
 import io.github.javiewer.Properties
 import io.github.javiewer.R.layout
-import io.github.javiewer.activity.MainActivity
-import io.github.javiewer.adapter.item.DataSource
+import io.github.javiewer.model.entity.DataSource
 import java.io.File
 import java.io.IOException
-import java.net.URI
-import java.net.URISyntaxException
 
 class StartActivity : AppCompatActivity() {
 

@@ -22,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.javiewer.R;
 import io.github.javiewer.activity.MovieListActivity;
-import io.github.javiewer.adapter.item.MovieDetail;
+import io.github.javiewer.model.entity.MovieDetail;
 import io.github.javiewer.view.ViewUtil;
 
 /**

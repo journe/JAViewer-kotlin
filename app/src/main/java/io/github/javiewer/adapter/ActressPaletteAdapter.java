@@ -20,7 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.javiewer.R;
-import io.github.javiewer.adapter.item.Actress;
+import io.github.javiewer.model.entity.Actress;
 import io.github.javiewer.view.SquareTopCrop;
 import io.github.javiewer.view.ViewUtil;
 import io.github.javiewer.view.listener.ActressClickListener;

@@ -14,7 +14,7 @@ import java.util.List;
 
 import io.github.javiewer.JAViewer;
 import io.github.javiewer.activity.FavouriteActivity;
-import io.github.javiewer.adapter.item.Actress;
+import io.github.javiewer.model.entity.Actress;
 
 /**
  * Project: JAViewer

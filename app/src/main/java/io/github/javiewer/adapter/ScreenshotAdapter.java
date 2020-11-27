@@ -17,8 +17,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.javiewer.R;
 import io.github.javiewer.activity.GalleryActivity;
-import io.github.javiewer.adapter.item.Movie;
-import io.github.javiewer.adapter.item.Screenshot;
+import io.github.javiewer.model.entity.Movie;
+import io.github.javiewer.model.entity.Screenshot;
 import io.github.javiewer.view.ViewUtil;
 
 /**

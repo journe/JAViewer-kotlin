@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.javiewer.R;
 import io.github.javiewer.activity.MovieListActivity;
-import io.github.javiewer.adapter.item.Genre;
+import io.github.javiewer.model.entity.Genre;
 
 /**
  * Project: JAViewer

@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import io.github.javiewer.adapter.MovieAdapter
-import io.github.javiewer.adapter.item.Movie
-import io.github.javiewer.network.provider.AVMOProvider
+import io.github.javiewer.model.entity.Movie
+import io.github.javiewer.model.network.provider.AVMOProvider
 import io.github.javiewer.view.decoration.MovieItemDecoration
 import io.github.javiewer.view.listener.EndlessOnScrollListener
 import jp.wasabeef.recyclerview.adapters.SlideInBottomAnimationAdapter

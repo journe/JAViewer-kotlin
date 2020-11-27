@@ -4,12 +4,11 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ItemAnimator
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import io.github.javiewer.adapter.DownloadLinkAdapter
-import io.github.javiewer.adapter.item.DownloadLink
-import io.github.javiewer.network.provider.DownloadLinkProvider
+import io.github.javiewer.model.entity.DownloadLink
+import io.github.javiewer.model.network.provider.DownloadLinkProvider
 import io.github.javiewer.view.decoration.DownloadItemDecoration
 import io.github.javiewer.view.listener.BasicOnScrollListener
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
