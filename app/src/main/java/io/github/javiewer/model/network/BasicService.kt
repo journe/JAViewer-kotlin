@@ -11,7 +11,7 @@ import retrofit2.http.Url
  */
 interface BasicService {
   @GET("$LANGUAGE_NODE/page/{page}")
-  fun getHomePage(@Path("page") page: Int): Call<ResponseBody>
+  suspend fun getHomePage(@Path("page") page: Int): ResponseBody
 
   @GET("$LANGUAGE_NODE/released/page/{page}")
   fun getReleased(@Path("page") page: Int): Call<ResponseBody>

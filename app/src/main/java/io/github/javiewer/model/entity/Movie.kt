@@ -8,13 +8,14 @@ import androidx.room.PrimaryKey
  */
 @Entity
 data class Movie(
-  val title: String?,
+  val title: String?,//标题
   @PrimaryKey
-  val code: String?,
-  val date: String?,
-  val coverUrl: String?,
-  val link: String?,
-  val hot: Boolean = false
+  val code: String = "",//番号
+  val date: String?,//发布日期
+  val coverUrl: String?,//封面链接
+  val link: String?,//详情链接
+  val hot: Boolean = false,//是否热门
+  val page: Int = 0//本地用参数，此Item在请求的第几页
 ) {
   override fun toString(): String {
     return "Movie{" +

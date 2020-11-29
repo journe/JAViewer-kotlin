@@ -14,7 +14,10 @@ import java.util.LinkedHashMap
  * Project: JAViewer
  */
 object AVMOProvider {
-  fun parseMovies(html: String?): List<Movie> {
+  fun parseMovies(
+    html: String?,
+    page: Int = 0
+  ): List<Movie> {
     val document = Jsoup.parse(html)
     val movies: MutableList<Movie> = ArrayList()
     for (box in document.select("a[class*=movie-box]")) {
@@ -31,7 +34,8 @@ object AVMOProvider {
               date[1].text(),  //日期
               img.attr("src"),  //图片地址
               box.attr("href"),  //链接
-              hot //是否热门
+              hot, //是否热门
+              page
           )
       )
     }

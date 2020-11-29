@@ -7,8 +7,8 @@ import io.github.javiewer.model.network.BasicService
 object PokemonFactory {
 
   fun makePokemonRepository(
-      api: BasicService,
-      db: AppDatabase
+    api: BasicService,
+    db: AppDatabase
   ): Repository =
     PokemonRepositoryImpl(
         api,
@@ -19,14 +19,11 @@ object PokemonFactory {
   val pagingConfig = PagingConfig(
       // 每页显示的数据的大小
       pageSize = 30,
-
       // 开启占位符
       enablePlaceholders = true,
-
       // 预刷新的距离，距离最后一个 item 多远时加载数据
       // 默认为 pageSize
       prefetchDistance = 4,
-
       /**
        * 初始化加载数量，默认为 pageSize * 3
        *

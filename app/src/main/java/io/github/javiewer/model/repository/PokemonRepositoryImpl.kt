@@ -20,7 +20,7 @@ class PokemonRepositoryImpl(
   override fun fetchPokemonList(): Flow<PagingData<Movie>> {
     return Pager(
         config = pageConfig,
-        remoteMediator = PokemonRemoteMediator(api, db)
+        remoteMediator = JavHomeRemoteMediator(api, db)
     ) {
       db.movieDao().getAll()
     }.flow

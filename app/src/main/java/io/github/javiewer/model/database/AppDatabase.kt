@@ -8,8 +8,8 @@ import androidx.room.TypeConverters
 import io.github.javiewer.JAViewer
 import io.github.javiewer.model.entity.Movie
 import io.github.javiewer.model.database.dao.MovieDao
-import io.github.javiewer.model.database.dao.SearchHistoryDao
-import io.github.javiewer.model.database.dao.UserInfoDao
+//import io.github.javiewer.model.database.dao.SearchHistoryDao
+//import io.github.javiewer.model.database.dao.UserInfoDao
 import kotlin.reflect.KProperty
 
 /**
@@ -22,8 +22,8 @@ import kotlin.reflect.KProperty
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
-  abstract fun userInfoDao(): UserInfoDao
-  abstract fun searchHistoryDao(): SearchHistoryDao
+//  abstract fun userInfoDao(): UserInfoDao
+//  abstract fun searchHistoryDao(): SearchHistoryDao
   abstract fun movieDao(): MovieDao
 
   operator fun getValue(
