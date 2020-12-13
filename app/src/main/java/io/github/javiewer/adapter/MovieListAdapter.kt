@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -13,8 +14,8 @@ import com.bumptech.glide.Glide
 import io.github.javiewer.R
 import io.github.javiewer.model.entity.Movie
 
-class PokemonAdapter :
-    PagingDataAdapter<Movie, PokemonAdapter.ViewHolder>(diffCallback) {
+class MovieListAdapter :
+    PagingDataAdapter<Movie, MovieListAdapter.ViewHolder>(diffCallback) {
 
   override fun onCreateViewHolder(
     parent: ViewGroup,
@@ -35,9 +36,10 @@ class PokemonAdapter :
     val movie = getItem(position)!!
     holder.parse(movie)
     holder.mCard!!.setOnClickListener {
+      it.findNavController().navigate(R.id.nav_movie_detail)
 //            val intent = Intent(context, MovieActivity::class.java)
 //            val bundle = Bundle()
-////      bundle.putSerializable("movie", movie)
+//      bundle.putSerializable("movie", movie)
 //            intent.putExtras(bundle)
 //            mParentActivity.startActivity(intent)
     }

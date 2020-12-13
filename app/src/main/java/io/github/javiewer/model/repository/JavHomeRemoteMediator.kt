@@ -92,7 +92,7 @@ class JavHomeRemoteMediator(
 
       if (JAViewer.application.isConnectedNetwork()) {
         // 无网络加载本地数据
-//        return MediatorResult.Success(endOfPaginationReached = true)
+        return MediatorResult.Success(endOfPaginationReached = true)
       }
 
       // 第二步： 请问网络分页数据
@@ -101,27 +101,8 @@ class JavHomeRemoteMediator(
       val wrappers = AVMOProvider.parseMovies(response.string(), page + 1)
       val endOfPaginationReached = wrappers.isEmpty()
 
-//      val item = result.map {
-//        PokemonEntity(
-//            name = it.name,
-//            url = it.getImageUrl(),
-//            remoteName = remotePokemon,
-//            page = page + 1
-//        )
-//      }
-
       // 第三步： 插入数据库
       db.withTransaction {
-//        if (loadType == LoadType.REFRESH) {
-//          remoteKeysDao.clearRemoteKeys(remotePokemon)
-//          movieDao.clearPokemon(remotePokemon)
-//        }
-//        val nextKey = if (endOfPaginationReached) null else page + 1
-//        val entity = RemoteKeysEntity(
-//            remoteName = remotePokemon,
-//            nextKey = nextKey
-//        )
-//        remoteKeysDao.insertAll(entity)
         movieDao.insertList(wrappers)
       }
 

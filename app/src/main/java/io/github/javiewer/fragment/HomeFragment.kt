@@ -13,7 +13,7 @@ import androidx.lifecycle.observe
 import androidx.paging.LoadState
 import io.github.javiewer.JAViewer
 import io.github.javiewer.R
-import io.github.javiewer.adapter.PokemonAdapter
+import io.github.javiewer.adapter.MovieListAdapter
 import io.github.javiewer.adapter.footer.FooterAdapter
 import io.github.javiewer.model.repository.PokemonFactory
 import kotlinx.android.synthetic.main.fragment_home.recycler_view
@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
       }
     }
   }
-  private val mPokemonAdapter by lazy { PokemonAdapter() }
+  private val mPokemonAdapter by lazy { MovieListAdapter() }
 
   override fun onCreateView(
     inflater: LayoutInflater,

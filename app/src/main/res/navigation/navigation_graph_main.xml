@@ -29,4 +29,9 @@
       android:id="@+id/nav_favourite"
       android:name="io.github.javiewer.fragment.favourite.FavouriteFragment"
       android:label="FavouriteFragment" />
+  <fragment
+      android:id="@+id/nav_movie_detail"
+      android:name="io.github.javiewer.activity.MovieDetailFragment"
+      tools:layout="@layout/activity_movie"
+      android:label="MovieDetailFragment" />
 </navigation>

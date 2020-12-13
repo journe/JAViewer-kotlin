@@ -8,9 +8,9 @@ import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import io.github.javiewer.R
-import io.github.javiewer.adapter.PokemonAdapter
+import io.github.javiewer.adapter.MovieListAdapter
 
-class FooterAdapter(val adapter: PokemonAdapter) : LoadStateAdapter<NetworkStateItemViewHolder>() {
+class FooterAdapter(val adapter: MovieListAdapter) : LoadStateAdapter<NetworkStateItemViewHolder>() {
     override fun onBindViewHolder(holder: NetworkStateItemViewHolder, loadState: LoadState) {
         val params = holder.itemView.layoutParams
         if (params is StaggeredGridLayoutManager.LayoutParams) {
