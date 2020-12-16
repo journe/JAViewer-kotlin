@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
+import com.orhanobut.logger.Logger
 import com.robertlevonyan.views.chip.Chip
 import io.github.javiewer.JAViewer
 import io.github.javiewer.NavigationGraphMainDirections
@@ -76,8 +77,9 @@ class MovieDetailFragment : BaseFragment() {
       startActivity(intent)
     }
     fab!!.bringToFront()
-    val call = JAViewer.SERVICE[args.link]
-    call!!.enqueue(object : Callback<ResponseBody> {
+//    val call = JAViewer.SERVICE[args.link]
+    val call = JAViewer.SERVICE.getMovieDetailS(args.link)
+    call.enqueue(object : Callback<ResponseBody> {
       override fun onResponse(
         call: Call<ResponseBody>,
         response: Response<ResponseBody>
@@ -85,13 +87,12 @@ class MovieDetailFragment : BaseFragment() {
         if (!response.isSuccessful) {
           return
         }
-        val detail: MovieDetail
         try {
-          detail = AVMOProvider.parseMoviesDetail(
+          val detail = AVMOProvider.parseMoviesDetail(
               response.body()!!
                   .string()
           )
-          detail.headers.add(0, Header.create("影片名", movie!!.title, null))
+//          detail.headers.add(0, Header.create("影片名", movie!!.title, null))
           displayInfo(detail,view)
           Glide.with(
               toolbar_layout_background!!.context.applicationContext

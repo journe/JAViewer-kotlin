@@ -13,8 +13,11 @@ interface BasicService {
   @GET("$LANGUAGE_NODE/page/{page}")
   suspend fun getHomePage(@Path("page") page: Int): ResponseBody
 
-  @GET("$LANGUAGE_NODE/page/{page}")
-  suspend fun getMovieDetail(@Path("page") page: Int): ResponseBody
+  @GET
+  suspend fun getMovieDetail(@Url url: String?): ResponseBody
+
+  @GET
+  fun getMovieDetailS(@Url url: String?): Call<ResponseBody>
 
   @GET("$LANGUAGE_NODE/released/page/{page}")
   fun getReleased(@Path("page") page: Int): Call<ResponseBody>

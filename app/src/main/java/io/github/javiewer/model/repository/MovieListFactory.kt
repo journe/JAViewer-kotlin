@@ -11,8 +11,6 @@ object MovieListFactory {
     db: AppDatabase
   ): Repository =
     MovieListRepositoryImpl(
-        api,
-        db,
         pagingConfig
     )
 

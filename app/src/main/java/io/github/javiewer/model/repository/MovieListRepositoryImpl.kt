@@ -3,6 +3,7 @@ package io.github.javiewer.model.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import io.github.javiewer.JAViewer
 import io.github.javiewer.model.database.AppDatabase
 import io.github.javiewer.model.entity.Movie
 import io.github.javiewer.model.network.BasicService
@@ -12,24 +13,22 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class MovieListRepositoryImpl(
-  private val api: BasicService,
-  private val db: AppDatabase,
   private val pageConfig: PagingConfig
 ) : Repository {
 
   override fun fetchMovieList(): Flow<PagingData<Movie>> {
     return Pager(
         config = pageConfig,
-        remoteMediator = JavHomeRemoteMediator(api, db)
+        remoteMediator = JavHomeRemoteMediator()
     ) {
-      db.movieDao().getAll()
+      JAViewer.DB.movieDao().getAll()
     }.flow
   }
 
   override suspend fun fetchPokemonInfo(name: String): Flow<JavResult<Movie>> {
     return flow {
       try {
-        val pokemonDao = db.movieDao()
+        val pokemonDao = JAViewer.DB.movieDao()
         // 查询数据库是否存在，如果不存在请求网络
         val infoModel = pokemonDao.getByCode(name)
         if (infoModel == null) {

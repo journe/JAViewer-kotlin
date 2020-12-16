@@ -16,10 +16,7 @@ import retrofit2.HttpException
 import java.io.IOException
 
 @OptIn(ExperimentalPagingApi::class)
-class JavHomeRemoteMediator(
-  val api: BasicService,
-  val db: AppDatabase
-) : RemoteMediator<Int, Movie>() {
+class JavHomeRemoteMediator : RemoteMediator<Int, Movie>() {
   /**
    * 首页列表加载逻辑：
    * 1.首次进入一定会进行网络请求
@@ -44,7 +41,7 @@ class JavHomeRemoteMediator(
        * 3. 将网路插入到本地数据库中
        */
 
-      val movieDao = db.movieDao()
+      val movieDao = JAViewer.DB.movieDao()
 //            val remoteKeysDao = db.remoteKeysDao()
       // 第一步： 判断 LoadType
       val pageKey = when (loadType) {
@@ -68,10 +65,6 @@ class JavHomeRemoteMediator(
            * 方式一：这种方式比较简单，当前页面最后一条数据是下一页的开始位置
            * 通过 load 方`法的参数 state 获取当页面最后一条数据
            */
-          /**
-           * 方式一：这种方式比较简单，当前页面最后一条数据是下一页的开始位置
-           * 通过 load 方法的参数 state 获取当页面最后一条数据
-           */
           Logger.d("APPEND")
           val lastItem = state.lastItemOrNull()
               ?: return MediatorResult.Success(
@@ -92,21 +85,21 @@ class JavHomeRemoteMediator(
         }
       }
 
+      Logger.d(pageKey)
       if (JAViewer.application.isConnectedNetwork()) {
         // 无网络加载本地数据
+        Logger.d("isConnectedNetwork")
         return MediatorResult.Success(endOfPaginationReached = true)
       }
 
-      // 第二步： 请问网络分页数据
-      Logger.d("请问网络分页数据")
+      // 第二步： 网络分页数据
       val page = pageKey ?: 0
-      val response = api.getHomePage(page + 1)
-      Logger.d(response.string())
+      val response = JAViewer.SERVICE.getHomePage(page + 1)
       val wrappers = AVMOProvider.parseMovies(response.string(), page + 1)
       val endOfPaginationReached = wrappers.isEmpty()
 
       // 第三步： 插入数据库
-      db.withTransaction {
+      JAViewer.DB.withTransaction {
         movieDao.insertList(wrappers)
       }
 
