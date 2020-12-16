@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
       }
     }
   }
-  private val mPokemonAdapter by lazy { MovieListAdapter() }
+  private val movieListAdapter by lazy { MovieListAdapter() }
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -48,17 +48,17 @@ class HomeFragment : Fragment() {
     savedInstanceState: Bundle?
   ) {
     super.onViewCreated(view, savedInstanceState)
-    recycler_view.adapter = mPokemonAdapter.withLoadStateFooter(FooterAdapter(mPokemonAdapter))
+    recycler_view.adapter = movieListAdapter.withLoadStateFooter(FooterAdapter(movieListAdapter))
 
     lifecycleScope.launchWhenCreated {
-      mPokemonAdapter.loadStateFlow.collectLatest { state ->
+      movieListAdapter.loadStateFlow.collectLatest { state ->
         refresh_layout.isRefreshing = state.refresh is LoadState.Loading
       }
     }
 
     viewModel.postOfData()
         .observe(viewLifecycleOwner) {
-          mPokemonAdapter.submitData(lifecycle, it)
+          movieListAdapter.submitData(lifecycle, it)
         }
   }
 //  override fun newCall(page: Int): Call<ResponseBody> {

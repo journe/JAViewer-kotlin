@@ -31,7 +31,14 @@
       android:label="FavouriteFragment" />
   <fragment
       android:id="@+id/nav_movie_detail"
-      android:name="io.github.javiewer.activity.MovieDetailFragment"
+      android:name="io.github.javiewer.fragment.MovieDetailFragment"
       tools:layout="@layout/activity_movie"
       android:label="MovieDetailFragment" />
+  <action
+    android:id="@+id/to_movie_detail"
+    app:destination="@+id/nav_movie_detail">
+    <argument
+        android:name="link"
+        app:argType="string" />
+  </action>
 </navigation>

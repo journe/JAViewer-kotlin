@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="40dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:orientation="horizontal"
     android:paddingLeft="72dp"
-    android:paddingRight="16dp">
+    android:paddingRight="16dp"
+    >
 
     <TextView
         android:id="@+id/header_name"
@@ -14,7 +16,7 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:singleLine="true"
-        android:text="这里是名称"
+        tools:text="@tools:sample/lorem"
         android:textSize="13sp" />
 
     <TextView
@@ -23,7 +25,7 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:singleLine="true"
-        android:text="这里是内容"
+        tools:text="@tools:sample/full_names"
         android:textColor="?android:textColorPrimary"
         android:textSize="13sp" />
 

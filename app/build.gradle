@@ -48,8 +48,8 @@ dependencies {
   implementation 'com.github.chrisbanes:PhotoView:2.2.0'
 
   //Navigation
-  implementation "androidx.navigation:navigation-fragment-ktx:2.3.1"
-  implementation "androidx.navigation:navigation-ui-ktx:2.3.1"
+  implementation "androidx.navigation:navigation-fragment-ktx:2.3.2"
+  implementation "androidx.navigation:navigation-ui-ktx:2.3.2"
 
   //Support
   implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -59,7 +59,7 @@ dependencies {
   implementation 'androidx.legacy:legacy-support-v4:1.0.0'
   implementation 'androidx.percentlayout:percentlayout:1.0.0'
   implementation 'androidx.constraintlayout:constraintlayout:2.1.0-alpha1'
-  implementation "androidx.recyclerview:recyclerview:1.2.0-alpha06"
+  implementation "androidx.recyclerview:recyclerview:1.2.0-beta01"
 
   //lifecycle
   implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
@@ -70,9 +70,9 @@ dependencies {
 
 
   //paging
-  implementation "androidx.paging:paging-runtime-ktx:3.0.0-alpha09"
+  implementation "androidx.paging:paging-runtime-ktx:3.0.0-alpha10"
   // optional - Guava ListenableFuture support
-  implementation "androidx.paging:paging-guava:3.0.0-alpha09"
+  implementation "androidx.paging:paging-guava:3.0.0-alpha10"
 
   //room
   implementation "androidx.room:room-runtime:2.3.0-alpha03"
