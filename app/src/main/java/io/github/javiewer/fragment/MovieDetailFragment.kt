@@ -16,6 +16,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.FileProvider
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -23,6 +24,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.robertlevonyan.views.chip.Chip
 import io.github.javiewer.JAViewer
+import io.github.javiewer.NavigationGraphMainDirections
 import io.github.javiewer.R
 import io.github.javiewer.activity.DownloadActivity
 import io.github.javiewer.activity.FavouriteActivity
@@ -51,6 +53,7 @@ import java.io.IOException
 
 class MovieDetailFragment : BaseFragment() {
   var movie: Movie? = null
+  private val args :MovieDetailFragmentArgs by navArgs()
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -73,7 +76,7 @@ class MovieDetailFragment : BaseFragment() {
       startActivity(intent)
     }
     fab!!.bringToFront()
-    val call = JAViewer.SERVICE[movie!!.link]
+    val call = JAViewer.SERVICE[args.link]
     call!!.enqueue(object : Callback<ResponseBody> {
       override fun onResponse(
         call: Call<ResponseBody>,
@@ -123,7 +126,7 @@ class MovieDetailFragment : BaseFragment() {
         mText.visibility = View.VISIBLE
         ViewUtil.alignIconToView(mIcon, mText)
       } else {
-        recycler_view.adapter = MovieHeaderAdapter(detail.headers, this, mIcon)
+//        recycler_view.adapter = MovieHeaderAdapter(detail.headers, this, mIcon)
         recycler_view.isNestedScrollingEnabled = false
       }
     }
@@ -135,15 +138,15 @@ class MovieDetailFragment : BaseFragment() {
       val mIcon: ImageView = view.findViewById<View>(R.id.movie_icon_screenshots) as ImageView
       if (detail.screenshots.isEmpty()) {
         val mText: TextView = view.findViewById<View>(R.id.screenshots_empty_text) as TextView
-        recycler_view.setVisibility(View.GONE)
-        mText.setVisibility(View.VISIBLE)
+        recycler_view.visibility = View.GONE
+        mText.visibility = View.VISIBLE
         ViewUtil.alignIconToView(mIcon, mText)
       } else {
-        recycler_view.setAdapter(ScreenshotAdapter(detail.screenshots, this, mIcon, movie))
-        recycler_view.setLayoutManager(
-            StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL)
-        )
-        recycler_view.setNestedScrollingEnabled(false)
+//        recycler_view.setAdapter(ScreenshotAdapter(detail.screenshots, this, mIcon, movie))
+//        recycler_view.setLayoutManager(
+//            StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL)
+//        )
+        recycler_view.isNestedScrollingEnabled = false
       }
     }
 
@@ -154,15 +157,15 @@ class MovieDetailFragment : BaseFragment() {
       val mIcon: ImageView = view.findViewById<View>(R.id.movie_icon_actresses) as ImageView
       if (detail.actresses.isEmpty()) {
         val mText: TextView = view.findViewById<View>(R.id.actresses_empty_text) as TextView
-        recycler_view.setVisibility(View.GONE)
-        mText.setVisibility(View.VISIBLE)
+        recycler_view.visibility = View.GONE
+        mText.visibility = View.VISIBLE
         ViewUtil.alignIconToView(mIcon, mText)
       } else {
-        recycler_view.setAdapter(ActressPaletteAdapter(detail.actresses, this, mIcon))
-        recycler_view.setLayoutManager(
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        )
-        recycler_view.setNestedScrollingEnabled(false)
+//        recycler_view.setAdapter(ActressPaletteAdapter(detail.actresses, this, mIcon))
+//        recycler_view.setLayoutManager(
+//            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+//        )
+        recycler_view.isNestedScrollingEnabled = false
       }
     }
 
@@ -177,15 +180,15 @@ class MovieDetailFragment : BaseFragment() {
       } else {
         for (i in detail.genres.indices) {
           val genre: Genre = detail.genres.get(i)
-          val view: View = layoutInflater.inflate(layout.chip_genre, genre_flow_layout, false)
+          val view: View = layoutInflater.inflate(R.layout.chip_genre, genre_flow_layout, false)
           val chip: Chip = view.findViewById<View>(R.id.chip_genre) as Chip
           chip.setOnClickListener {
             if (genre.link != null) {
-              startActivity(
-                  MovieListActivity.newIntent(
-                      this@MovieDetailFragment, genre.name, genre.link
-                  )
-              )
+//              startActivity(
+//                  MovieListActivity.newIntent(
+//                      this@MovieDetailFragment, genre.name, genre.link
+//                  )
+//              )
             }
           }
           chip.chipText = genre.name
@@ -223,7 +226,7 @@ class MovieDetailFragment : BaseFragment() {
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
       android.R.id.home -> {
-        onBackPressed()
+//        onBackPressed()
         return true
       }
     }
@@ -271,7 +274,7 @@ class MovieDetailFragment : BaseFragment() {
     mShareButton.setOnMenuItemClickListener(object : OnMenuItemClickListener {
       override fun onMenuItemClick(item: MenuItem): Boolean {
         try {
-//          val cache = File(activity!!.getExternalFilesDir("cache"), "screenshot")
+          val cache = File(activity!!.getExternalFilesDir("cache"), "screenshot")
 //          //Generate screenshot
 //          val os = FileOutputStream(cache)
 //          val screenshot = screenBitmap

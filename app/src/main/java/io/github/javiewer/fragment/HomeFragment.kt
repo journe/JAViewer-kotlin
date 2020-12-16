@@ -15,7 +15,7 @@ import io.github.javiewer.JAViewer
 import io.github.javiewer.R
 import io.github.javiewer.adapter.MovieListAdapter
 import io.github.javiewer.adapter.footer.FooterAdapter
-import io.github.javiewer.model.repository.PokemonFactory
+import io.github.javiewer.model.repository.MovieListFactory
 import kotlinx.android.synthetic.main.fragment_home.recycler_view
 import kotlinx.android.synthetic.main.fragment_home.refresh_layout
 import kotlinx.coroutines.flow.collectLatest
@@ -28,7 +28,7 @@ class HomeFragment : Fragment() {
     object : ViewModelProvider.Factory {
       override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return HomeViewModel(
-            PokemonFactory.makePokemonRepository(JAViewer.SERVICE, JAViewer.DB)
+            MovieListFactory.repository(JAViewer.SERVICE, JAViewer.DB)
         ) as T
       }
     }

@@ -11,13 +11,13 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class PokemonRepositoryImpl(
-  val api: BasicService,
-  val db: AppDatabase,
-  val pageConfig: PagingConfig
+class MovieListRepositoryImpl(
+  private val api: BasicService,
+  private val db: AppDatabase,
+  private val pageConfig: PagingConfig
 ) : Repository {
 
-  override fun fetchPokemonList(): Flow<PagingData<Movie>> {
+  override fun fetchMovieList(): Flow<PagingData<Movie>> {
     return Pager(
         config = pageConfig,
         remoteMediator = JavHomeRemoteMediator(api, db)
@@ -31,7 +31,7 @@ class PokemonRepositoryImpl(
       try {
         val pokemonDao = db.movieDao()
         // 查询数据库是否存在，如果不存在请求网络
-        var infoModel = pokemonDao.getByCode(name)
+        val infoModel = pokemonDao.getByCode(name)
         if (infoModel == null) {
           // 网络请求
 //          val netWorkPokemonInfo = api.fetchPokemonInfo(name)

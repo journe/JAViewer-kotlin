@@ -14,7 +14,7 @@ import io.github.javiewer.model.repository.Repository
  */
 class HomeViewModel(private val repository: Repository) : ViewModel() {
   fun postOfData(): LiveData<PagingData<Movie>> =
-    repository.fetchPokemonList()
+    repository.fetchMovieList()
         .cachedIn(viewModelScope)
         .asLiveData()
 

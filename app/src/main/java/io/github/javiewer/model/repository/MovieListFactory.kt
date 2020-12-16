@@ -4,19 +4,19 @@ import androidx.paging.PagingConfig
 import io.github.javiewer.model.database.AppDatabase
 import io.github.javiewer.model.network.BasicService
 
-object PokemonFactory {
+object MovieListFactory {
 
-  fun makePokemonRepository(
+  fun repository(
     api: BasicService,
     db: AppDatabase
   ): Repository =
-    PokemonRepositoryImpl(
+    MovieListRepositoryImpl(
         api,
         db,
         pagingConfig
     )
 
-  val pagingConfig = PagingConfig(
+  private val pagingConfig = PagingConfig(
       // 每页显示的数据的大小
       pageSize = 30,
       // 开启占位符

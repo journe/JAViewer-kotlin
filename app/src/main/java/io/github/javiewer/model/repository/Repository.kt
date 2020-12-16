@@ -5,7 +5,7 @@ import io.github.javiewer.model.entity.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface Repository {
-  fun fetchPokemonList(): Flow<PagingData<Movie>>
+  fun fetchMovieList(): Flow<PagingData<Movie>>
 
   suspend fun fetchPokemonInfo(name: String): Flow<JavResult<Movie>>
 

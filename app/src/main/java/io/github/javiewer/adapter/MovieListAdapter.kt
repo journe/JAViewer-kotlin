@@ -11,6 +11,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import io.github.javiewer.NavigationGraphMainDirections
 import io.github.javiewer.R
 import io.github.javiewer.model.entity.Movie
 
@@ -36,7 +37,8 @@ class MovieListAdapter :
     val movie = getItem(position)!!
     holder.parse(movie)
     holder.mCard!!.setOnClickListener {
-      it.findNavController().navigate(R.id.nav_movie_detail)
+      it.findNavController()
+          .navigate(NavigationGraphMainDirections.toMovieDetail(movie.link ?: ""))
 //            val intent = Intent(context, MovieActivity::class.java)
 //            val bundle = Bundle()
 //      bundle.putSerializable("movie", movie)

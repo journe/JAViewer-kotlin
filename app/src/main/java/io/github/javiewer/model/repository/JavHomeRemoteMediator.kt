@@ -5,6 +5,7 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
+import com.orhanobut.logger.Logger
 import io.github.javiewer.JAViewer
 import io.github.javiewer.model.database.AppDatabase
 import io.github.javiewer.model.entity.Movie
@@ -71,6 +72,7 @@ class JavHomeRemoteMediator(
            * 方式一：这种方式比较简单，当前页面最后一条数据是下一页的开始位置
            * 通过 load 方法的参数 state 获取当页面最后一条数据
            */
+          Logger.d("APPEND")
           val lastItem = state.lastItemOrNull()
               ?: return MediatorResult.Success(
                   endOfPaginationReached = true
@@ -96,8 +98,10 @@ class JavHomeRemoteMediator(
       }
 
       // 第二步： 请问网络分页数据
+      Logger.d("请问网络分页数据")
       val page = pageKey ?: 0
       val response = api.getHomePage(page + 1)
+      Logger.d(response.string())
       val wrappers = AVMOProvider.parseMovies(response.string(), page + 1)
       val endOfPaginationReached = wrappers.isEmpty()
 
