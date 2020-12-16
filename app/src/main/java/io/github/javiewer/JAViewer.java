@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.Environment;
 import androidx.fragment.app.Fragment;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
@@ -23,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 
 import cn.jzvd.JZVideoPlayer;
-import io.fabric.sdk.android.Fabric;
 import io.github.javiewer.adapter.item.DataSource;
 import io.github.javiewer.fragment.ActressesFragment;
 import io.github.javiewer.fragment.HomeFragment;
@@ -171,6 +169,6 @@ public class JAViewer extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Fabric.with(this, new Crashlytics());
+        //Fabric.with(this, new Crashlytics());
     }
 }
