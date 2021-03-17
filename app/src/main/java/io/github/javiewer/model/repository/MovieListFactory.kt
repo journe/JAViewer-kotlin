@@ -6,13 +6,7 @@ import io.github.javiewer.model.network.BasicService
 
 object MovieListFactory {
 
-  fun repository(
-    api: BasicService,
-    db: AppDatabase
-  ): Repository =
-    MovieListRepositoryImpl(
-        pagingConfig
-    )
+  fun repository(): Repository = MovieListRepositoryImpl(pagingConfig)
 
   private val pagingConfig = PagingConfig(
       // 每页显示的数据的大小

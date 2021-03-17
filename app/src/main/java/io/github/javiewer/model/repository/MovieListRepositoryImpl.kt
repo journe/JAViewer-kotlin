@@ -25,7 +25,7 @@ class MovieListRepositoryImpl(
     }.flow
   }
 
-  override suspend fun fetchPokemonInfo(name: String): Flow<JavResult<Movie>> {
+  override suspend fun fetchMovieInfo(name: String): Flow<JavResult<Movie>> {
     return flow {
       try {
         val pokemonDao = JAViewer.DB.movieDao()

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +14,7 @@ import io.github.javiewer.JAViewer
 import io.github.javiewer.R
 import io.github.javiewer.adapter.MovieListAdapter
 import io.github.javiewer.adapter.footer.FooterAdapter
+import io.github.javiewer.base.BaseFragment
 import io.github.javiewer.model.repository.MovieListFactory
 import kotlinx.android.synthetic.main.fragment_home.recycler_view
 import kotlinx.android.synthetic.main.fragment_home.refresh_layout
@@ -23,12 +23,12 @@ import kotlinx.coroutines.flow.collectLatest
 /**
  * Project: JAViewer
  */
-class HomeFragment : Fragment() {
-  private val viewModel: HomeViewModel by viewModels {
+class AllFragment : BaseFragment() {
+  private val viewModel: AllViewModel by viewModels {
     object : ViewModelProvider.Factory {
       override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return HomeViewModel(
-            MovieListFactory.repository(JAViewer.SERVICE, JAViewer.DB)
+        return AllViewModel(
+            MovieListFactory.repository()
         ) as T
       }
     }
@@ -56,10 +56,13 @@ class HomeFragment : Fragment() {
       }
     }
 
-    viewModel.postOfData()
-        .observe(viewLifecycleOwner) {
-          movieListAdapter.submitData(lifecycle, it)
-        }
+    viewModel.movieList.observe(viewLifecycleOwner) {
+      movieListAdapter.submitData(lifecycle, it)
+    }
+//    viewModel.postOfData()
+//        .observe(viewLifecycleOwner) {
+//          movieListAdapter.submitData(lifecycle, it)
+//        }
   }
 //  override fun newCall(page: Int): Call<ResponseBody> {
 //    return JAViewer.SERVICE.getHomePage(page)

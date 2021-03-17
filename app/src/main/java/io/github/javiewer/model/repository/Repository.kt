@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 interface Repository {
   fun fetchMovieList(): Flow<PagingData<Movie>>
 
-  suspend fun fetchPokemonInfo(name: String): Flow<JavResult<Movie>>
+  suspend fun fetchMovieInfo(name: String): Flow<JavResult<Movie>>
 
 //  suspend fun fetchPokemonByParameter(parameter: String): Flow<PagingData<Movie>>
 }

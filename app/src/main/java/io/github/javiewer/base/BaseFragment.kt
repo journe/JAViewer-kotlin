@@ -1,4 +1,4 @@
-package io.github.javiewer.fragment
+package io.github.javiewer.base
 
 import androidx.fragment.app.Fragment
 
