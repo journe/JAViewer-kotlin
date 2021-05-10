@@ -12,6 +12,7 @@ import io.github.javiewer.JAViewer
 import io.github.javiewer.R.id
 import io.github.javiewer.R.layout
 import io.github.javiewer.adapter.ViewPagerAdapter
+import io.github.javiewer.base.SecureActivity
 import io.github.javiewer.fragment.DownloadFragment
 
 class DownloadActivity : SecureActivity() {

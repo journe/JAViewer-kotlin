@@ -1,15 +1,10 @@
 package io.github.javiewer.model.repository
 
 import androidx.paging.PagingConfig
-import io.github.javiewer.model.database.AppDatabase
-import io.github.javiewer.model.network.BasicService
 
 object MovieListFactory {
 
-  fun repository(
-    api: BasicService,
-    db: AppDatabase
-  ): Repository =
+  fun repository(): Repository =
     MovieListRepositoryImpl(
         pagingConfig
     )

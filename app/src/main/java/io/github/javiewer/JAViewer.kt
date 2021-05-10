@@ -9,11 +9,12 @@ import com.google.gson.stream.JsonReader
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
-import io.github.javiewer.model.entity.DataSource
 import io.github.javiewer.model.database.AppDatabase
+import io.github.javiewer.model.entity.DataSource
 import io.github.javiewer.model.network.BasicRetrofit
 import io.github.javiewer.model.network.BasicService
 import io.github.javiewer.util.ExoPlayerImpl
+import io.github.javiewer.util.common.Utils
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import java.io.File
@@ -115,6 +116,7 @@ class JAViewer : Application() {
   override fun onCreate() {
     super.onCreate()
     application = this
+    Utils.init(this)
     DB = AppDatabase.getInstance(application)
     Logger.addLogAdapter(object :
         AndroidLogAdapter(

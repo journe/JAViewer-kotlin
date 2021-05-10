@@ -23,7 +23,7 @@
         android:layout_marginLeft="72dp"
         android:ellipsize="marquee"
         android:singleLine="true"
-        android:text="这里是名称"
+        android:text=""
         android:textSize="16sp" />
 
     <View

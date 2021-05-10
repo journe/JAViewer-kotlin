@@ -15,7 +15,7 @@
       android:label="PopularFragment" />
   <fragment
       android:id="@+id/nav_actresses"
-      android:name="io.github.javiewer.fragment.ActressesFragment"
+      android:name="io.github.javiewer.fragment.actress.ActressesFragment"
       android:label="ActressesFragment" />
   <fragment
       android:id="@+id/nav_released"
@@ -32,17 +32,17 @@
   <fragment
       android:id="@+id/nav_movie_detail"
       android:name="io.github.javiewer.fragment.MovieDetailFragment"
-      tools:layout="@layout/activity_movie"
-      android:label="MovieDetailFragment" >
+      android:label="MovieDetailFragment"
+      tools:layout="@layout/activity_movie">
     <argument
         android:name="link"
-        app:argType="string"/>
+        app:argType="string" />
   </fragment>
   <action
-    android:id="@+id/to_movie_detail"
-    app:destination="@+id/nav_movie_detail">
-<!--    <argument-->
-<!--        android:name="link"-->
-<!--        app:argType="string" />-->
+      android:id="@+id/to_movie_detail"
+      app:destination="@+id/nav_movie_detail">
+    <!--    <argument-->
+    <!--        android:name="link"-->
+    <!--        app:argType="string" />-->
   </action>
 </navigation>

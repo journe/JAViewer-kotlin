@@ -2,29 +2,26 @@ package io.github.javiewer.adapter;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import androidx.palette.graphics.Palette;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import androidx.cardview.widget.CardView;
+import androidx.palette.graphics.Palette;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-
-import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.github.javiewer.R;
-import io.github.javiewer.model.entity.Actress;
+import io.github.javiewer.model.entity.MovieDetail;
 import io.github.javiewer.view.SquareTopCrop;
 import io.github.javiewer.view.ViewUtil;
 import io.github.javiewer.view.listener.ActressClickListener;
 import io.github.javiewer.view.listener.ActressLongClickListener;
+import java.util.List;
 
 import static com.bumptech.glide.load.engine.DiskCacheStrategy.SOURCE;
 
@@ -34,13 +31,13 @@ import static com.bumptech.glide.load.engine.DiskCacheStrategy.SOURCE;
 
 public class ActressPaletteAdapter extends RecyclerView.Adapter<ActressPaletteAdapter.ViewHolder> {
 
-    private List<Actress> actresses;
+    private List<MovieDetail.Actress> actresses;
 
     private Activity mParentActivity;
 
     private ImageView mIcon;
 
-    public ActressPaletteAdapter(List<Actress> actresses, Activity mParentActivity, ImageView mIcon) {
+    public ActressPaletteAdapter(List<MovieDetail.Actress> actresses, Activity mParentActivity, ImageView mIcon) {
         this.actresses = actresses;
         this.mParentActivity = mParentActivity;
         this.mIcon = mIcon;
@@ -55,7 +52,7 @@ public class ActressPaletteAdapter extends RecyclerView.Adapter<ActressPaletteAd
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        final Actress actress = actresses.get(position);
+        final MovieDetail.Actress actress = actresses.get(position);
 
         holder.mCard.setOnClickListener(new ActressClickListener(actress, mParentActivity));
         holder.mCard.setOnLongClickListener(new ActressLongClickListener(actress, mParentActivity));

@@ -1,11 +1,8 @@
 package io.github.javiewer.model.network.provider
 
-import io.github.javiewer.model.entity.Actress
-import io.github.javiewer.model.entity.Genre
 import io.github.javiewer.model.entity.Movie
 import io.github.javiewer.model.entity.MovieDetail
-import io.github.javiewer.model.entity.MovieDetail.Header
-import io.github.javiewer.model.entity.Screenshot
+import io.github.javiewer.model.entity.MovieDetail.*
 import org.jsoup.Jsoup
 import java.util.ArrayList
 import java.util.LinkedHashMap
@@ -51,7 +48,7 @@ object AVMOProvider {
       val span = box.select("div.photo-info > span")
           .first()
       actresses.add(
-          Actress.create(
+          Actress(
               span.text(),  //名字
               img.attr("src"),  //图片地址
               box.attr("href") //链接
@@ -79,7 +76,7 @@ object AVMOProvider {
     run {
       for (box in document.select("[class*=sample-box]")) {
         movie.screenshots.add(
-            Screenshot.create(
+            Screenshot(
                 box.getElementsByTag("img")
                     .first()
                     .attr("src"),
@@ -93,7 +90,7 @@ object AVMOProvider {
     run {
       for (box in document.select("[class*=avatar-box]")) {
         movie.actresses.add(
-            Actress.create(
+            Actress(
                 box.text(),
                 box.getElementsByTag("img")
                     .first()
@@ -114,7 +111,7 @@ object AVMOProvider {
               .split(":".toRegex())
               .toTypedArray()
           movie.headers.add(
-              Header.create(
+              Header(
                   strings[0].trim { it <= ' ' },
                   if (strings.size > 1) strings[1].trim { it <= ' ' } else "",
                   null
@@ -133,7 +130,7 @@ object AVMOProvider {
         }
         for (i in 0 until Math.min(headerNames.size, headerAttr.size)) {
           movie.headers.add(
-              Header.create(
+              Header(
                   headerNames[i],
                   headerAttr[i][0].trim { it <= ' ' },
                   headerAttr[i][1].trim { it <= ' ' }
@@ -142,7 +139,7 @@ object AVMOProvider {
         }
         for (a in info.select("* > [class=genre] > a")) {
           movie.genres.add(
-              Genre.create(
+              Genre(
                   a.text(),
                   a.attr("href")
               )
@@ -168,7 +165,7 @@ object AVMOProvider {
     for (element in container.getElementsByClass("genre-box")) {
       val list: MutableList<Genre> = ArrayList()
       for (e in element.getElementsByTag("a")) {
-        list.add(Genre.create(e.text(), e.attr("href")))
+        list.add(Genre(e.text(), e.attr("href")))
       }
       genres.add(list)
     }

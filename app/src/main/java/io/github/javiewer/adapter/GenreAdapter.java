@@ -10,13 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import io.github.javiewer.model.entity.MovieDetail;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.github.javiewer.R;
 import io.github.javiewer.activity.MovieListActivity;
-import io.github.javiewer.model.entity.Genre;
+import io.github.javiewer.model.entity.MovieDetail.Genre;
 
 /**
  * Project: JAViewer
@@ -27,7 +28,7 @@ public class GenreAdapter extends RecyclerView.Adapter<GenreAdapter.ViewHolder> 
 
     private Activity mParentActivity;
 
-    public GenreAdapter(List<Genre> genres, Activity mParentActivity) {
+    public GenreAdapter(List<MovieDetail.Genre> genres, Activity mParentActivity) {
         this.genres = genres;
         this.mParentActivity = mParentActivity;
     }

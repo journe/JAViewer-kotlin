@@ -26,7 +26,7 @@ interface BasicService {
   fun getPopular(@Path("page") page: Int): Call<ResponseBody>
 
   @GET("$LANGUAGE_NODE/actresses/page/{page}")
-  fun getActresses(@Path("page") page: Int): Call<ResponseBody>
+  suspend fun getActresses(@Path("page") page: Int): ResponseBody
 
   @GET("$LANGUAGE_NODE/genre")
   fun getGenres(): Call<ResponseBody>

@@ -14,7 +14,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import io.github.javiewer.JAViewer
 import io.github.javiewer.R
-import io.github.javiewer.fragment.ActressesFragment
+import io.github.javiewer.base.SecureActivity
+import io.github.javiewer.fragment.actress.ActressesFragment
 import io.github.javiewer.fragment.HomeFragment
 import io.github.javiewer.fragment.PopularFragment
 import io.github.javiewer.fragment.ReleasedFragment

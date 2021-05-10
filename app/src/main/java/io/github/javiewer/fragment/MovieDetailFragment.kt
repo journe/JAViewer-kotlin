@@ -3,7 +3,6 @@ package io.github.javiewer.fragment
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Intent
-import android.graphics.Bitmap.CompressFormat.JPEG
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -17,26 +16,17 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
-import com.orhanobut.logger.Logger
 import com.robertlevonyan.views.chip.Chip
 import io.github.javiewer.JAViewer
-import io.github.javiewer.NavigationGraphMainDirections
 import io.github.javiewer.R
 import io.github.javiewer.activity.DownloadActivity
 import io.github.javiewer.activity.FavouriteActivity
-import io.github.javiewer.activity.MovieListActivity
-import io.github.javiewer.adapter.ActressPaletteAdapter
-import io.github.javiewer.adapter.MovieHeaderAdapter
-import io.github.javiewer.adapter.ScreenshotAdapter
-import io.github.javiewer.model.entity.Genre
+import io.github.javiewer.base.BaseFragment
 import io.github.javiewer.model.entity.Movie
 import io.github.javiewer.model.entity.MovieDetail
-import io.github.javiewer.model.entity.MovieDetail.Header
 import io.github.javiewer.model.network.provider.AVMOProvider
 import io.github.javiewer.view.ViewUtil
 import kotlinx.android.synthetic.main.activity_movie.fab
@@ -49,7 +39,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
 
 class MovieDetailFragment : BaseFragment() {
@@ -180,7 +169,7 @@ class MovieDetailFragment : BaseFragment() {
         ViewUtil.alignIconToView(mIcon, mText)
       } else {
         for (i in detail.genres.indices) {
-          val genre: Genre = detail.genres.get(i)
+          val genre: MovieDetail.Genre = detail.genres.get(i)
           val view: View = layoutInflater.inflate(R.layout.chip_genre, genre_flow_layout, false)
           val chip: Chip = view.findViewById<View>(R.id.chip_genre) as Chip
           chip.setOnClickListener {

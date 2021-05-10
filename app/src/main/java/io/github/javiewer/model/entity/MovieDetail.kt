@@ -11,28 +11,26 @@ data class MovieDetail(
   var genres: MutableList<Genre> = mutableListOf(),
   var actresses: MutableList<Actress> = mutableListOf()
 ) {
-  class Header : Linkable() {
-    @JvmField var name: String? = null
-    @JvmField var value: String? = null
-    override fun toString(): String {
-      return "Header{" +
-          "name='" + name + '\'' +
-          ", value='" + value + '\'' +
-          '}'
-    }
+  data class Header(
+    val name: String?,
+    val value: String?,
+    val link: String?
+  )
 
-    companion object {
-      fun create(
-        name: String?,
-        value: String?,
-        link: String?
-      ): Header {
-        val header = Header()
-        header.name = name
-        header.value = value
-        header.link = link
-        return header
-      }
-    }
-  }
+  data class Genre(
+    val name: String?,
+    val link: String?
+  )
+
+  data class Actress(
+    val name: String?,
+    val imageUrl: String?,
+    val detailUrl: String?
+  )
+
+  data class Screenshot(
+    val thumbnailUrl: String?,
+    val imageUrl: String?
+  )
 }
+

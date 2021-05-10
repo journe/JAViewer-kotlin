@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import io.github.javiewer.model.entity.MovieDetail;
 import java.util.List;
 
 import butterknife.BindView;
@@ -18,7 +19,6 @@ import butterknife.ButterKnife;
 import io.github.javiewer.R;
 import io.github.javiewer.activity.GalleryActivity;
 import io.github.javiewer.model.entity.Movie;
-import io.github.javiewer.model.entity.Screenshot;
 import io.github.javiewer.view.ViewUtil;
 
 /**
@@ -27,7 +27,7 @@ import io.github.javiewer.view.ViewUtil;
 
 public class ScreenshotAdapter extends RecyclerView.Adapter<ScreenshotAdapter.ViewHolder> {
 
-    private List<Screenshot> screenshots;
+    private List<MovieDetail.Screenshot> screenshots;
 
     private Activity mParentActivity;
 
@@ -35,7 +35,7 @@ public class ScreenshotAdapter extends RecyclerView.Adapter<ScreenshotAdapter.Vi
 
     private Movie movie;
 
-    public ScreenshotAdapter(List<Screenshot> screenshots, Activity mParentActivity, ImageView mIcon, Movie movie) {
+    public ScreenshotAdapter(List<MovieDetail.Screenshot> screenshots, Activity mParentActivity, ImageView mIcon, Movie movie) {
         this.screenshots = screenshots;
         this.mParentActivity = mParentActivity;
         this.mIcon = mIcon;
@@ -51,7 +51,7 @@ public class ScreenshotAdapter extends RecyclerView.Adapter<ScreenshotAdapter.Vi
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        Screenshot screenshot = screenshots.get(position);
+        MovieDetail.Screenshot screenshot = screenshots.get(position);
 
         holder.mImage.setImageDrawable(null);
         Glide.with(holder.mImage.getContext().getApplicationContext())

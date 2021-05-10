@@ -6,14 +6,8 @@ import java.io.Serializable
 /**
  * Project: JAViewer
  */
-open class Linkable : Serializable {
+open class Linkable {
   var link: String? = null
-  override fun equals(linkable: Any?): Boolean {
-    return if (linkable !is Linkable) {
-      false
-    } else Objects_equals(link, linkable.link)
-  }
-
   override fun toString(): String {
     return "Linkable{" +
         "link='" + link + '\'' +

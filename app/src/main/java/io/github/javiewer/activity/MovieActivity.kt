@@ -46,10 +46,10 @@ import io.github.javiewer.R.layout
 import io.github.javiewer.adapter.ActressPaletteAdapter
 import io.github.javiewer.adapter.MovieHeaderAdapter
 import io.github.javiewer.adapter.ScreenshotAdapter
-import io.github.javiewer.model.entity.Genre
+import io.github.javiewer.base.SecureActivity
 import io.github.javiewer.model.entity.Movie
 import io.github.javiewer.model.entity.MovieDetail
-import io.github.javiewer.model.entity.MovieDetail.Header
+import io.github.javiewer.model.entity.MovieDetail.*
 import io.github.javiewer.model.network.PSVS
 import io.github.javiewer.model.network.item.AvgleSearchResult
 import io.github.javiewer.model.network.item.AvgleSearchResult.Response.Video
@@ -122,7 +122,7 @@ class MovieActivity() : SecureActivity() {
               response.body()!!
                   .string()
           )
-          detail.headers.add(0, Header.create("影片名", movie!!.title, null))
+          detail.headers.add(0, MovieDetail.Header("影片名", movie!!.title, null))
           displayInfo(detail)
           Glide.with(
               mToolbarLayoutBackground!!.context.applicationContext

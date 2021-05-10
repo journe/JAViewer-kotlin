@@ -11,16 +11,13 @@ import androidx.recyclerview.widget.RecyclerView.ItemAnimator
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import butterknife.BindView
 import butterknife.ButterKnife
-import io.github.javiewer.JAViewer
 import io.github.javiewer.R
 import io.github.javiewer.R.layout
 import io.github.javiewer.adapter.GenreAdapter
-import io.github.javiewer.model.entity.Genre
+import io.github.javiewer.model.entity.MovieDetail.Genre
 import io.github.javiewer.view.ViewUtil
 import io.github.javiewer.view.decoration.GridSpacingItemDecoration
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
-import okhttp3.ResponseBody
-import retrofit2.Call
 
 class GenreFragment : Fragment() {
   @BindView(R.id.genre_recycler_view)
@@ -54,7 +51,4 @@ class GenreFragment : Fragment() {
     adapter!!.notifyItemRangeInserted(0, adapter!!.itemCount)
   }
 
-  fun getCall(page: Int): Call<ResponseBody> {
-    return JAViewer.SERVICE.getActresses(page)
-  }
 }

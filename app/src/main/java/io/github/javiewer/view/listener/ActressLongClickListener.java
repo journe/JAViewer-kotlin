@@ -5,16 +5,14 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
-import androidx.appcompat.app.AlertDialog;
 import android.view.View;
 import android.widget.Toast;
-
-import java.util.Collections;
-import java.util.List;
-
+import androidx.appcompat.app.AlertDialog;
 import io.github.javiewer.JAViewer;
 import io.github.javiewer.activity.FavouriteActivity;
-import io.github.javiewer.model.entity.Actress;
+import io.github.javiewer.model.entity.MovieDetail;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Project: JAViewer
@@ -23,9 +21,9 @@ import io.github.javiewer.model.entity.Actress;
 public class ActressLongClickListener implements View.OnLongClickListener {
 
     private Activity mActivity;
-    private Actress actress;
+    private MovieDetail.Actress actress;
 
-    public ActressLongClickListener(Actress actress, Activity mActivity) {
+    public ActressLongClickListener(MovieDetail.Actress actress, Activity mActivity) {
         this.actress = actress;
         this.mActivity = mActivity;
     }
@@ -34,7 +32,7 @@ public class ActressLongClickListener implements View.OnLongClickListener {
     public boolean onLongClick(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
         String[] items;
-        final List<Actress> actresses = JAViewer.CONFIGURATIONS.getStarredActresses();
+        final List<MovieDetail.Actress> actresses = JAViewer.CONFIGURATIONS.getStarredActresses();
         final boolean contain = actresses.contains(actress);
         if (contain) {
             items = new String[]{"复制女优名字", "取消收藏"};

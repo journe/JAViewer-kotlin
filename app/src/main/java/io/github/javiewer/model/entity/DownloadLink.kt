@@ -32,7 +32,7 @@ class DownloadLink : Linkable() {
       download.size = size
       download.date = date
       download.link = link
-      download.magnetLink = MagnetLink.Companion.create(magnetLink)
+      download.magnetLink = MagnetLink.create(magnetLink)
       return download
     }
   }

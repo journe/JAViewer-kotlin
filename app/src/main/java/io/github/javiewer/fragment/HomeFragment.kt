@@ -6,16 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.paging.LoadState
-import io.github.javiewer.JAViewer
 import io.github.javiewer.R
 import io.github.javiewer.adapter.MovieListAdapter
 import io.github.javiewer.adapter.footer.FooterAdapter
-import io.github.javiewer.model.repository.MovieListFactory
 import kotlinx.android.synthetic.main.fragment_home.recycler_view
 import kotlinx.android.synthetic.main.fragment_home.refresh_layout
 import kotlinx.coroutines.flow.collectLatest
@@ -24,15 +20,8 @@ import kotlinx.coroutines.flow.collectLatest
  * Project: JAViewer
  */
 class HomeFragment : Fragment() {
-  private val viewModel: HomeViewModel by viewModels {
-    object : ViewModelProvider.Factory {
-      override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return HomeViewModel(
-            MovieListFactory.repository(JAViewer.SERVICE, JAViewer.DB)
-        ) as T
-      }
-    }
-  }
+  private val viewModel: HomeViewModel by viewModels()
+
   private val movieListAdapter by lazy { MovieListAdapter() }
 
   override fun onCreateView(

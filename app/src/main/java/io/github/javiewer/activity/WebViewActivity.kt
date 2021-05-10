@@ -23,6 +23,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import io.github.javiewer.R.id
 import io.github.javiewer.R.layout
+import io.github.javiewer.base.SecureActivity
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Interceptor

@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
 import io.github.javiewer.R.id
 import io.github.javiewer.R.layout
+import io.github.javiewer.base.SecureActivity
 import io.github.javiewer.fragment.MovieListFragment
 import io.github.javiewer.view.ViewUtil
 

@@ -1,5 +1,6 @@
 package io.github.javiewer.fragment.favourite
 
+import android.app.Activity
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import io.github.javiewer.JAViewer
 import io.github.javiewer.adapter.ActressAdapter
@@ -11,7 +12,7 @@ import io.github.javiewer.view.decoration.ActressItemDecoration
  */
 class FavouriteActressFragment : FavouriteFragment() {
   override fun adapter(): ItemAdapter<*, *> {
-    return ActressAdapter(JAViewer.CONFIGURATIONS!!.starredActresses, this.activity)
+    return ActressAdapter(JAViewer.CONFIGURATIONS!!.starredActresses, activity as Activity)
   }
 
   override fun decoration(): ItemDecoration? {

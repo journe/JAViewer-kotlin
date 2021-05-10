@@ -1,4 +1,4 @@
-package io.github.javiewer.activity
+package io.github.javiewer.base
 
 import android.view.WindowManager.LayoutParams
 import androidx.appcompat.app.AppCompatActivity

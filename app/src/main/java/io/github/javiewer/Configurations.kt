@@ -2,9 +2,9 @@ package io.github.javiewer
 
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
-import io.github.javiewer.model.entity.Actress
 import io.github.javiewer.model.entity.DataSource
 import io.github.javiewer.model.entity.Movie
+import io.github.javiewer.model.entity.MovieDetail
 import java.io.File
 import java.io.FileReader
 import java.io.FileWriter
@@ -16,7 +16,7 @@ import java.util.ArrayList
  */
 class Configurations {
   private var starred_movies: ArrayList<Movie>? = null
-  private var starred_actresses: ArrayList<Actress>? = null
+  private var starred_actresses: ArrayList<MovieDetail.Actress>? = null
   private var data_source: DataSource? = null
   private var show_ads = false
   var downloadCounter: Long = 0
@@ -27,7 +27,7 @@ class Configurations {
       }
       return starred_movies!!
     }
-  val starredActresses: ArrayList<Actress>
+  val starredActresses: ArrayList<MovieDetail.Actress>
     get() {
       if (starred_actresses == null) {
         starred_actresses = ArrayList()

@@ -17,6 +17,7 @@ import io.github.javiewer.R.id
 import io.github.javiewer.R.layout
 import io.github.javiewer.R.menu
 import io.github.javiewer.adapter.ViewPagerAdapter
+import io.github.javiewer.base.SecureActivity
 import io.github.javiewer.fragment.favourite.FavouriteActressFragment
 import io.github.javiewer.fragment.favourite.FavouriteFragment
 import io.github.javiewer.fragment.favourite.FavouriteMovieFragment
