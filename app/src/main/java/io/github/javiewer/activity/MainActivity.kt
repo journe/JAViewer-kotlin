@@ -17,6 +17,8 @@ import io.github.javiewer.R
 import io.github.javiewer.base.SecureActivity
 import io.github.javiewer.fragment.actress.ActressesFragment
 import io.github.javiewer.fragment.HomeFragment
+import io.github.javiewer.fragment.ActressesFragment
+import io.github.javiewer.fragment.AllFragment
 import io.github.javiewer.fragment.PopularFragment
 import io.github.javiewer.fragment.ReleasedFragment
 import io.github.javiewer.fragment.genre.GenreTabsFragment
@@ -165,7 +167,7 @@ class MainActivity : SecureActivity() {
     val FRAGMENTS: HashMap<Int?, Class<out Fragment?>?> =
       object : HashMap<Int?, Class<out Fragment?>?>() {
         init {
-          put(ID_HOME, HomeFragment::class.java)
+          put(ID_HOME, AllFragment::class.java)
           put(ID_POPULAR, PopularFragment::class.java)
           put(ID_RELEASED, ReleasedFragment::class.java)
           put(ID_ACTRESSES, ActressesFragment::class.java)

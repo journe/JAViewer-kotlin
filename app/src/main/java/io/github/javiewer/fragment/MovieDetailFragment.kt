@@ -25,6 +25,8 @@ import io.github.javiewer.R
 import io.github.javiewer.activity.DownloadActivity
 import io.github.javiewer.activity.FavouriteActivity
 import io.github.javiewer.base.BaseFragment
+import io.github.javiewer.base.BaseFragment
+import io.github.javiewer.model.entity.Genre
 import io.github.javiewer.model.entity.Movie
 import io.github.javiewer.model.entity.MovieDetail
 import io.github.javiewer.model.network.provider.AVMOProvider

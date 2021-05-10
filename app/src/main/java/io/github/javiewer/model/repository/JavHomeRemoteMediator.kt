@@ -86,11 +86,11 @@ class JavHomeRemoteMediator : RemoteMediator<Int, Movie>() {
       }
 
       Logger.d(pageKey)
-      if (JAViewer.application.isConnectedNetwork()) {
-        // 无网络加载本地数据
-        Logger.d("isConnectedNetwork")
-        return MediatorResult.Success(endOfPaginationReached = true)
-      }
+//      if (JAViewer.application.isConnectedNetwork()) {
+//        // 无网络加载本地数据
+//        Logger.d("isConnectedNetwork")
+//        return MediatorResult.Success(endOfPaginationReached = true)
+//      }
 
       // 第二步： 网络分页数据
       val page = pageKey ?: 0
